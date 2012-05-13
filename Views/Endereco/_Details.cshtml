@@ -1,0 +1,33 @@
+﻿@model AdmCRRN.Models.Agregados.Endereco
+@{
+    using (var Endereco = Model)
+    { 
+    <div class="display-label">
+        Bairro</div>
+    <div class="display-field">@Endereco.Bairro</div>
+
+    <div class="display-label">
+        Cep</div>
+    <div class="display-field">@Endereco.Cep</div>
+
+    <div class="display-label">
+        Cidade</div>
+    <div class="display-field">@Endereco.Cidade</div>
+
+    <div class="display-label">
+        Logradouro</div>
+    <div class="display-field">@Endereco.Logradouro</div>
+
+    <div class="display-label">
+        Numero</div>
+    <div class="display-field">@Endereco.Numero</div>
+
+    <div class="display-label">
+        Uf</div>
+    <div class="display-field">@Endereco.Uf</div>
+
+    <div class="display-label">
+        Complemento</div>
+    <div class="display-field">@Endereco.Complemento</div>
+    }
+}

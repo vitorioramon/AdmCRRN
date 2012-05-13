@@ -1,0 +1,26 @@
+﻿@model AdmCRRN.Models.Centro
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CentroAdministrativo</legend>
+
+    <div class="display-label">Cnpj</div>
+    <div class="display-field">@Model.CNPJ</div>
+
+    <div class="display-label">Nome</div>
+    <div class="display-field">@Model.Nome</div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Listar Usuários", "Index", "Account") |
+    @Html.ActionLink("Novo Usuário", "RegisterAdmin", "Account", new { id = Model.Id }, null) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

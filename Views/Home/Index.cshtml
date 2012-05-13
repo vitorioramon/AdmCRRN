@@ -1,0 +1,30 @@
+﻿@using AdmCRRN.Models.Sessoes
+@{
+    ViewBag.Title = "Home Page";
+}
+@*<h2>@ViewBag.Message</h2>*@
+@*<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">
+        http://asp.net/mvc</a>.
+</p>*@
+
+
+<ul>
+
+    @if (ContaSession.ContaDoTipoCentro())
+    {
+        <li>@Html.ActionLink("Entidades", "Index", "Entidade")</li>
+        <li>@Html.ActionLink("Usuários", "Index", "Account")</li>
+    }
+    else if (ContaSession.ContaDoTipoEntidade())
+    { 
+        <li>@Html.ActionLink("Membros", "Index", "Membro")</li>
+        <li>@Html.ActionLink("Usuários", "Index", "Account")</li>
+    }
+    else if (ContaSession.UsuarioDoPerfilSuper())
+    {
+        <h2>Usuario Adiministrador</h2>;
+        
+        <li>@Html.ActionLink("Centro Administrativo", "Index", "Centro")</li>
+    }
+</ul>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AdmCRRN.Models.Membro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Cpf
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Entidade
+        </th>
+    </tr>
+
+@foreach (var item in Model.ToList()) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+            @item.CPF
+        </td>
+        <td>
+            @item.Nome
+        </td>
+        <td>
+            @item.NomeTipoMembro
+        </td>
+        <td>
+            @item.Entidade.Nome
+        </td>
+    </tr>
+}
+
+</table>
+

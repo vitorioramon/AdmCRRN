@@ -1,0 +1,28 @@
+﻿@model AdmCRRN.Models.ViewModel.UsuarioViewModel
+@{
+    Layout = null;
+}
+
+<h2>Nome Sisteam</h2>
+
+<h3>Cadastro de Conta do Usuário</h3>
+
+<p>
+    Caro(a) Usuário(a):
+    <br />
+    Informamos que sua conta encontra-se disponível para utilização.
+    Abaixo segue alguns dados de sua conta. Utilíze-os para acessar
+    sua área restrita e utilizar os recursos atribuidos a você. 
+    <br />
+    <br />
+    Nome: @Model.Nome
+    <br />
+    Login: @Model.Email
+    <br />
+    Senha: @Model.Senha
+    <br />
+    <br />
+    Quaisquer duvidas favor nos contatar
+    <br />
+</p>
+<a href="#">contato@nome.com.br</a><br />
