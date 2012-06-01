@@ -26,6 +26,7 @@
 </p>
 <div id="grid">
     @grid.GetHtml(
+        htmlAttributes: new { @class = "table table-bordered" },
         columns: grid.Columns(
                  grid.Column(header: "Edit", format: (item) => Html.ActionLink("Editar", "Edit", new { id = item.id })),
                  grid.Column(header: "Details", format: (item) => Html.ActionLink("Detalhe", "Details", new { id = item.id })),
