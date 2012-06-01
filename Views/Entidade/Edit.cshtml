@@ -18,11 +18,34 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Tipo)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(e => e.Tipo, Model.ListaTiposEntidade())
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.CNPJ)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CNPJ)
             @Html.ValidationMessageFor(model => model.CNPJ)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataFundacao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataFundacao)
+            @Html.ValidationMessageFor(model => model.DataFundacao)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataEmancipacao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataEmancipacao)
+            @Html.ValidationMessageFor(model => model.DataEmancipacao)
         </div>
 
         <div class="editor-label">
@@ -32,6 +55,28 @@
             @Html.EditorFor(model => model.Nome)
             @Html.ValidationMessageFor(model => model.Nome)
         </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dirigente)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Dirigente.Id,(SelectList)ViewBag.Dirigentes)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Tesoureiro)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Tesoureiro.Id,(SelectList)ViewBag.Tesoureiros)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Secretario)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Secretario.Id, (SelectList)ViewBag.Secretarios)
+        </div>
+
 
         @Html.Partial("~/Views/Endereco/_Edit.cshtml", Model.Endereco)
 

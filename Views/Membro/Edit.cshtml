@@ -17,6 +17,9 @@
 
         @Html.HiddenFor(model => model.Id)
 
+        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.TipoMembro)
+        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.EstadoCivil)
+
         <div class="editor-label">
             @Html.LabelFor(model => model.CPF)
         </div>
@@ -26,11 +29,75 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Rg)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rg)
+            @Html.ValidationMessageFor(model => model.Rg)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Nome)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Nome)
             @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefone)
+            @Html.ValidationMessageFor(model => model.Telefone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Celular)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Celular)
+            @Html.ValidationMessageFor(model => model.Celular)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Filiacao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Filiacao)
+            @Html.ValidationMessageFor(model => model.Filiacao)
+        </div>
+ 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataNascimento)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataNascimento)
+            @Html.ValidationMessageFor(model => model.DataNascimento)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataBatismo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataBatismo)
+            @Html.ValidationMessageFor(model => model.DataBatismo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OficianteBatismo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OficianteBatismo)
+            @Html.ValidationMessageFor(model => model.OficianteBatismo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataTornouSeMembro)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataTornouSeMembro)
+            @Html.ValidationMessageFor(model => model.DataTornouSeMembro)
         </div>
 
         @Html.Partial("~/Views/Endereco/_Edit.cshtml", Model.Endereco)
@@ -42,6 +109,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Entidade.Id })
 </div>
 

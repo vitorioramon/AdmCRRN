@@ -39,6 +39,7 @@
 @foreach (var item in Model.ToList()) {
     <tr>
         <td>
+            @Html.ActionLink("Usuários", "Index", "Account", new { id=item.Id }, null ) |
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })

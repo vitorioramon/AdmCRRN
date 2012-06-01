@@ -1,45 +1,88 @@
 ﻿@model AdmCRRN.Models.Entidade
-
+@using AdmCRRN.Models
+@using AdmCRRN.Models.Agregados
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Create</h2>
-
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Entidade</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CNPJ)
+    <h2>
+        Cadastrar nova entidade</h2>
+    <br />
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a href="#" data-toggle="#tab1"><i class="icon-home"></i>Dados da
+            entidade</a></li>
+        <li><a href="#" data-toggle="#tab2"><i class="icon-user"></i>Dirigente</a></li>
+        <li><a href="#" data-toggle="#tab3"><i class="icon-bullhorn"></i>Secretário</a></li>
+        <li><a href="#" data-toggle="#tab4"><i class="icon-lock"></i>Tesoureiro</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Tipo)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(e => e.Tipo, Model.ListaTiposEntidade())
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CNPJ)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CNPJ)
+                @Html.ValidationMessageFor(model => model.CNPJ)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Nome)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Nome)
+                @Html.ValidationMessageFor(model => model.Nome)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DataEmancipacao)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DataEmancipacao)
+                @Html.ValidationMessageFor(model => model.DataEmancipacao)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DataFundacao)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DataFundacao)
+                @Html.ValidationMessageFor(model => model.DataFundacao)
+            </div>
+            @Html.Partial("~/Views/Endereco/_Edit.cshtml", Model.Endereco)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CNPJ)
-            @Html.ValidationMessageFor(model => model.CNPJ)
+        <div class="tab-pane" id="tab2">
+            @Html.Partial("~/Views/Entidade/_Membro.cshtml", new Membro() { Cargo = 0, Endereco = new Endereco() })
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nome)
+        <div class="tab-pane" id="tab3">
+            @Html.Partial("~/Views/Entidade/_Membro.cshtml", new Membro() { Cargo = 1, Endereco = new Endereco() })
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nome)
-            @Html.ValidationMessageFor(model => model.Nome)
+        <div class="tab-pane" id="tab4">
+            @Html.Partial("~/Views/Entidade/_Membro.cshtml", new Membro() { Cargo = 2, Endereco = new Endereco() })
         </div>
-
-        @Html.Partial("~/Views/Endereco/_Edit.cshtml", Model.Endereco)
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+    </div>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 }
+<script type="text/javascript">
+    $('#myTab a').click(function () {
+        var tab = $(this).attr('data-toggle');
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        $('#myTab li').removeClass('active');
+        $('.tab-pane').removeClass('active');
 
+        $(this).parent().addClass('active');
+        $(tab).addClass('active');
+    });
+</script>

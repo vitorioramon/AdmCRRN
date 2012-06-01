@@ -18,7 +18,7 @@
 
 </fieldset>
 <p>
-    @Html.ActionLink("Listar Usuários", "Index", "Account") |
+    @Html.ActionLink("Listar Usuários", "Index", "Account", new { id = Model.Id }, null) |
     @Html.ActionLink("Novo Usuário", "RegisterAdmin", "Account", new { id = Model.Id }, null) |
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

@@ -1,26 +1,21 @@
 ﻿@model AdmCRRN.Models.Membro
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
-
+<h2>
+    Details</h2>
 <fieldset>
     <legend>Membro</legend>
-
-    <div class="display-label">CPF</div>
+    <div class="display-label">
+        CPF</div>
     <div class="display-field">@Model.CPF</div>
-
-    <div class="display-label">Nome</div>
+    <div class="display-label">
+        Nome</div>
     <div class="display-field">@Model.Nome</div>
-
     @Html.Partial("~/Views/Endereco/_Details.cshtml", Model.Endereco)
-
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index", new { id = Model.Entidade.Id })
 </p>
-

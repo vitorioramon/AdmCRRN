@@ -10,15 +10,36 @@
 <fieldset>
     <legend>Entidade</legend>
 
+    <div class="display-label">Tipo de entidade</div>
+    <div class="display-field">@Model.NomeTipoEntidade</div>
+
     <div class="display-label">Cnpj</div>
     <div class="display-field">@Model.CNPJ</div>
 
     <div class="display-label">Nome</div>
     <div class="display-field">@Model.Nome</div>
 
+    <div class="display-label">Emencipação</div>
+    <div class="display-field">@Model.DataEmancipacao</div>
+
+    <div class="display-label">Fundação</div>
+    <div class="display-field">@Model.DataFundacao</div>
+
+    <div class="display-label">Dirigente</div>
+    <div class="display-field">@Model.Dirigente.Nome</div>
+
+    <div class="display-label">Tesoreiro</div>
+    <div class="display-field">@Model.Tesoureiro.Nome</div>
+
+    <div class="display-label">Secretário</div>
+    <div class="display-field">@Model.Secretario.Nome</div>
+
+    @Html.Partial("~/Views/Endereco/_Details.cshtml", Model.Endereco)
+
 </fieldset>
 <p>
     @Html.ActionLink("Novo Usuário", "Register", "Account", new { id = Model.Id }, null) |
+    @Html.ActionLink("Membros", "Index", "Membro", new { id = Model.Id }, null) |
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

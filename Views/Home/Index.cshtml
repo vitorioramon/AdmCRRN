@@ -1,30 +1,39 @@
 ﻿@using AdmCRRN.Models.Sessoes
+@using AdmCRRN.Models.Transporte
 @{
     ViewBag.Title = "Home Page";
 }
-@*<h2>@ViewBag.Message</h2>*@
-@*<p>
+@*<h2>@ViewBag.Message</h2>*@ @*<p>
     To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">
         http://asp.net/mvc</a>.
 </p>*@
+@if (ContaSession.UsuarioDoPerfilSuper())
+{ 
+    <h2>
+        Usuario Adiministrador</h2>;
 
+}
+else
+{
+    if (@ContaSession.ContaNaSessao() != null)
+    { 
+    <h2>@ContaSession.ContaNaSessao().Instituicao.Nome</h2>
+    }
 
+}
 <ul>
-
     @if (ContaSession.ContaDoTipoCentro())
     {
         <li>@Html.ActionLink("Entidades", "Index", "Entidade")</li>
-        <li>@Html.ActionLink("Usuários", "Index", "Account")</li>
+        <li>@Html.ActionLink("Usuários", "Index", "Account", new { id = ContaSession.ContaNaSessao().Instituicao.Id }, null)</li>
     }
     else if (ContaSession.ContaDoTipoEntidade())
     { 
-        <li>@Html.ActionLink("Membros", "Index", "Membro")</li>
-        <li>@Html.ActionLink("Usuários", "Index", "Account")</li>
+        <li>@Html.ActionLink("Membros", "Index", "Membro", new { id = ContaSession.InstituicaoDaConta().Id }, null)</li>
+        <li>@Html.ActionLink("Mudar Senha", "ChangePassword", "Account", new ChangePasswordModel(), null)</li>
     }
     else if (ContaSession.UsuarioDoPerfilSuper())
     {
-        <h2>Usuario Adiministrador</h2>;
-        
         <li>@Html.ActionLink("Centro Administrativo", "Index", "Centro")</li>
     }
 </ul>

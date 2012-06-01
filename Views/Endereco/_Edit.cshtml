@@ -3,6 +3,10 @@
     using (var Endereco = Model)
     { 
     @Html.HiddenFor(model => Endereco.Id)
+    
+    <fieldset>
+        <legend>Endereco</legend>
+
     <div class="editor-label">
         @Html.LabelFor(model => Endereco.Bairro)
     </div>
@@ -52,5 +56,6 @@
         @Html.EditorFor(model => Endereco.Complemento)
         @Html.ValidationMessageFor(model => Endereco.Complemento)
     </div>
+    </fieldset>
     }
 }

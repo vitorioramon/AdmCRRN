@@ -1,13 +1,26 @@
 ﻿@model IEnumerable<AdmCRRN.Models.ViewModel.UsuarioViewModel>
-
+@using AdmCRRN.Models.Transporte
 @{
     ViewBag.Title = "Index";
+    var tipoInstituicao = "centro";
+    if (Model.Count() > 0)
+    {
+        tipoInstituicao = Model.First().TipoInstituicao.ToLower();
+    }
 }
-
-<h2>Index</h2>
-
+<h2>
+    Index</h2>
 <p>
-    @Html.ActionLink("Novo Usuário", "RegisterAdmin", "Account") 
+    @if (tipoInstituicao == "centro")
+    { 
+        @Html.ActionLink("Novo Usuário administrador", "RegisterAdmin", "Account")
+    }
+    @if (tipoInstituicao == "entidade")
+    { 
+        @Html.ActionLink("Novo Usuário da Entidade", "Register", "Account", new { id = Model.First().IdInstituicao }, null)
+    }
+    <br />
+    @Html.ActionLink("Mudar Senha", "ChangePassword", new ChangePasswordModel())
 </p>
 <table>
     <tr>
@@ -17,29 +30,25 @@
         <th>
             Email
         </th>
-         <th>
+        <th>
             Nome da Instituição
         </th>
-        <th></th>
     </tr>
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-           @Html.DisplayFor(modelItem => item.NomeInstituicao)
-        </td>
- 
-        <td>
-            @Html.ActionLink("Mudar Senha", "Edit", new { /* id=item.PrimaryKey */ }) |
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeInstituicao)
+            </td>
+        </tr>
+    }
 </table>
+<p>
+    <a href="@Request.UrlReferrer">Voltar</a>
+</p>

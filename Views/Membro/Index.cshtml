@@ -1,53 +1,39 @@
 ﻿@model IEnumerable<AdmCRRN.Models.Membro>
-
+@using AdmCRRN.Models.Sessoes
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
 }
-
-<h2>Index</h2>
-
+<h2>
+    Index</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (ContaSession.ContaDoTipoEntidade())
+    { 
+        @Html.ActionLink("Create New", "Create")
+    }
 </p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            Cpf
-        </th>
-        <th>
-            Nome
-        </th>
-        <th>
-            Tipo
-        </th>
-        <th>
-            Entidade
-        </th>
-    </tr>
-
-@foreach (var item in Model.ToList()) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-            @item.CPF
-        </td>
-        <td>
-            @item.Nome
-        </td>
-        <td>
-            @item.NomeTipoMembro
-        </td>
-        <td>
-            @item.Entidade.Nome
-        </td>
-    </tr>
-}
-
-</table>
-
+<br />
+<p>
+    @if (@Model.Count() > 0)
+    {
+        using (Html.BeginForm("Pesquisar", "Membro", new { id = @Model.First().Entidade.Id }))
+        {
+        <input type="text" name="txtPesquisar" value=" " />
+        <input type="submit" name="btnPesquisar" value="Procurar" />
+        }
+    }
+</p>
+<div id="grid">
+    @grid.GetHtml(
+        columns: grid.Columns(
+                 grid.Column(header: "Edit", format: (item) => Html.ActionLink("Editar", "Edit", new { id = item.id })),
+                 grid.Column(header: "Details", format: (item) => Html.ActionLink("Detalhe", "Details", new { id = item.id })),
+                 grid.Column(header: "Delete", format: (item) => Html.ActionLink("Excluir", "Delete", new { id = item.id })),
+                 grid.Column("Nome", header: "Código", canSort: false),
+                 grid.Column("CPF", header: "CPF", canSort: false),
+                 grid.Column("NomeTipoMembro", header: "Tipo Membro", canSort: false),
+                 grid.Column("Entidade.Nome", header: "Entidade", canSort: false)
+        )
+    )
+</div>
