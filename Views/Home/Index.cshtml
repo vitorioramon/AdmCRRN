@@ -3,15 +3,15 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@*<h2>@ViewBag.Message</h2>*@ @*<p>
+<h2>@ViewBag.Message</h2>
+<p>
     To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">
         http://asp.net/mvc</a>.
-</p>*@
+</p>
 @if (ContaSession.UsuarioDoPerfilSuper())
 { 
     <h2>
         Usuario Adiministrador</h2>;
-
 }
 else
 {
@@ -21,19 +21,4 @@ else
     }
 
 }
-<ul>
-    @if (ContaSession.ContaDoTipoCentro())
-    {
-        <li>@Html.ActionLink("Entidades", "Index", "Entidade")</li>
-        <li>@Html.ActionLink("Usuários", "Index", "Account", new { id = ContaSession.ContaNaSessao().Instituicao.Id }, null)</li>
-    }
-    else if (ContaSession.ContaDoTipoEntidade())
-    { 
-        <li>@Html.ActionLink("Membros", "Index", "Membro", new { id = ContaSession.InstituicaoDaConta().Id }, null)</li>
-        <li>@Html.ActionLink("Mudar Senha", "ChangePassword", "Account", new ChangePasswordModel(), null)</li>
-    }
-    else if (ContaSession.UsuarioDoPerfilSuper())
-    {
-        <li>@Html.ActionLink("Centro Administrativo", "Index", "Centro")</li>
-    }
-</ul>
+

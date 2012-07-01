@@ -1,4 +1,5 @@
-﻿@model IEnumerable<AdmCRRN.Models.ViewModel.UsuarioViewModel>
+﻿@model IEnumerable<AdmCRRN.Models.Usuario>
+@using AdmCRRN.Models
 @using AdmCRRN.Models.Transporte
 @{
     ViewBag.Title = "Index";
@@ -6,14 +7,7 @@
 <h2>
     Index</h2>
 <p>
-    @if (ViewBag.TipoInstituicao == "centro")
-    { 
-        @Html.ActionLink("Novo Usuário administrador", "RegisterAdmin", "Account")
-    }
-    @if (ViewBag.TipoInstituicao == "entidade")
-    { 
-        @Html.ActionLink("Novo Usuário da Entidade", "Register", "Account", new { id = Model.First().IdInstituicao }, null)
-    }
+    @Html.ActionLink((string)ViewBag.TextoLink, (string)ViewBag.ActionLink, "Account", (object)ViewBag.routeValue, null)
     <br />
     @Html.ActionLink("Mudar Senha", "ChangePassword", new ChangePasswordModel())
 </p>

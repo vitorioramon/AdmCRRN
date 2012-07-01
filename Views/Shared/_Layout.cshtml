@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using AdmCRRN.Models.Sessoes
+@using AdmCRRN.Models.Transporte
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,32 +22,37 @@
     </style>
 </head>
 <body>
-    <div class="page">
-        <header>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                    </a><a class="brand" href="#">Nome do projeto</a>
-                    <div class="nav-collapse">
-                        <ul class="nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                        </ul>
-                    </div>
-                    <div class="nav-collapse pull-right">
-                        @Html.Partial("_LogOnPartial")
-                    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Cadastros</li>
+                        @if (ContaSession.ContaDoTipoCentro())
+                        {
+                            <li>@Html.ActionLink("Entidades", "Index", "Entidade")</li>
+                            <li>@Html.ActionLink("Usuários", "Index", "Account", new { id = ContaSession.ContaNaSessao().Instituicao.Id }, null)</li>
+                        }
+                        else if (ContaSession.ContaDoTipoEntidade())
+                        { 
+                            <li>@Html.ActionLink("Membros", "Index", "Membro", new { id = ContaSession.InstituicaoDaConta().Id }, null)</li>
+                            <li>@Html.ActionLink("Mudar Senha", "ChangePassword", "Account", new ChangePasswordModel(), null)</li>
+                        }
+                        else if (ContaSession.UsuarioDoPerfilSuper())
+                        {
+                            <li>@Html.ActionLink("Centro Administrativo", "Index", "Centro")</li>
+                        }
+                        <li class="nav-header">Sistema</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                        <li>@Html.ActionLink("Sair", "LogOff", "Account")</li>
+                    </ul>
                 </div>
+                <!--/.well -->
+            </div>
+            <div class="span9 well">
+                @RenderBody()
             </div>
         </div>
-        </header>
-        <div class="container">
-            @RenderBody()
-        </div>
-        <footer>
-        </footer>
     </div>
 </body>
-</html>
