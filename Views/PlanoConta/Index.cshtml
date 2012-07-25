@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AdmCRRN.Models.PlanoConta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Planos de conta</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Descricao
+        </th>
+        <th>
+            TipoConta
+        </th>
+        <th>
+            Codigo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoConta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

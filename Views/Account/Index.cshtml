@@ -1,15 +1,13 @@
-﻿@model IEnumerable<AdmCRRN.Models.Usuario>
+﻿@model IEnumerable<AdmCRRN.Models.Transporte.Usuario>
 @using AdmCRRN.Models
 @using AdmCRRN.Models.Transporte
 @{
     ViewBag.Title = "Index";
 }
-<h2>
-    Index</h2>
+<h2>Cadastro de usuários</h2>
 <p>
-    @Html.ActionLink((string)ViewBag.TextoLink, (string)ViewBag.ActionLink, "Account", (object)ViewBag.routeValue, null)
-    <br />
-    @Html.ActionLink("Mudar Senha", "ChangePassword", new ChangePasswordModel())
+    @Html.ActionLink((string)ViewBag.TextOnLink, (string)ViewBag.ActionLink, "Account", (object)ViewBag.RouteValue, new { @class = "btn" })
+    @Html.ActionLink("Mudar Senha", "ChangePassword", new ChangePasswordModel(), new { @class="btn"})
 </p>
 <table class="table table-bordered">
     <tr>

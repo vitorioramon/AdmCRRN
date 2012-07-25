@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AdmCRRN.Models.TipoPagamento>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>
+    Cadastro de Tipos de pagamento</h2>
+<p>
+    @Html.ActionLink("Criar novo", "Create", null, new { @class = "btn" })
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Descricao
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

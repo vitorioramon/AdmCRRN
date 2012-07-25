@@ -1,4 +1,4 @@
-﻿@using AdmCRRN.Models.Sessoes
+﻿@using AdmCRRN.Controllers.Aplicacao.Sessao
 @using AdmCRRN.Models.Transporte
 @{
     ViewBag.Title = "Home Page";
@@ -8,17 +8,16 @@
     To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">
         http://asp.net/mvc</a>.
 </p>
-@if (ContaSession.UsuarioDoPerfilSuper())
+@if (SessaoUsuario.UsuarioSuperAdmin())
 { 
     <h2>
         Usuario Adiministrador</h2>;
 }
 else
 {
-    if (@ContaSession.ContaNaSessao() != null)
+    if (SessaoUsuario.Conta() != null)
     { 
-    <h2>@ContaSession.ContaNaSessao().Instituicao.Nome</h2>
+    <h2>@SessaoUsuario.Conta().Instituicao.Nome</h2>
     }
 
 }
-

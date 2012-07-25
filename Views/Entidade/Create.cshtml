@@ -13,12 +13,17 @@
     <h2>
         Cadastrar nova entidade</h2>
     <br />
-    <ul class="nav nav-tabs" id="myTab">
-        <li class="active"><a href="#" data-toggle="#tab1"><i class="icon-home"></i>Dados da
-            entidade</a></li>
-        <li><a href="#" data-toggle="#tab2"><i class="icon-user"></i>Dirigente</a></li>
-        <li><a href="#" data-toggle="#tab3"><i class="icon-bullhorn"></i>Secretário</a></li>
-        <li><a href="#" data-toggle="#tab4"><i class="icon-lock"></i>Tesoureiro</a></li>
+    <p>
+        <input type="submit" value="Gravar cadastro" class="btn btn-large btn" />
+        @Html.ActionLink("Voltar para lista", "Index", null, new { @class = "btn btn-large btn" })
+    </p>
+    <hr />
+    <ul class="nav nav-pills" id="myTab">
+        <li class="active"><a href="#" data-toggle="#tab1"><i class="icon-home"></i>&nbspDados
+            da entidade</a></li>
+        <li><a href="#" data-toggle="#tab2"><i class="icon-user"></i>&nbsp Dirigente</a></li>
+        <li><a href="#" data-toggle="#tab3"><i class="icon-bullhorn"></i>&nbsp Secretário</a></li>
+        <li><a href="#" data-toggle="#tab4"><i class="icon-lock"></i>&nbsp Tesoureiro</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="tab1">
@@ -68,21 +73,21 @@
             @Html.Partial("~/Views/Entidade/_Membro.cshtml", new Membro() { Cargo = 2, Endereco = new Endereco() })
         </div>
     </div>
-    <p>
-        <input type="submit" value="Create" />
-    </p>
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+    <script>
+        $('#myTab a').click(function () {
+            var tab = $(this).attr('data-toggle');
+
+            $('#myTab li').removeClass('active');
+            $('.tab-pane').removeClass('active');
+
+            $(this).parent().addClass('active');
+            $(tab).addClass('active');
+        });
+
+        jQuery(function ($) {
+            $("#DataFundacao").mask("99/99/9999");
+            $("#DataEmancipacao").mask("99/99/9999");
+            $("#CNPJ").mask("99.999.999/9999-99");
+        });
+    </script>
 }
-<script type="text/javascript">
-    $('#myTab a').click(function () {
-        var tab = $(this).attr('data-toggle');
-
-        $('#myTab li').removeClass('active');
-        $('.tab-pane').removeClass('active');
-
-        $(this).parent().addClass('active');
-        $(tab).addClass('active');
-    });
-</script>

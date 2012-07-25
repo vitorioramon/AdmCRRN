@@ -1,0 +1,33 @@
+﻿*
+{
+    margin: 0px;
+}
+
+#main
+{
+    height: 100%;
+    width: 1024px;
+    position: absolute;
+    right: 50px;
+}
+
+aside
+{
+    float: right;
+    background-color: #F0F0F0;
+    height: 100%;
+    width: 280px;
+    position: inherit;
+    right: 0px;
+}
+
+section
+{
+    background-image: url('../img/login_bg.png');
+    float: right;
+    position: inherit;
+    height: 100%;
+    width: 960px;
+    right: 280px;
+    background-repeat: no-repeat;
+}

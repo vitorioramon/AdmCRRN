@@ -1,20 +1,21 @@
 ﻿@model IEnumerable<AdmCRRN.Models.Transporte.EntidadeDTO>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="row-fluent">
+    <h2>
+        Cadastro de Entidades</h2>
+    <p class="row-fluent">
+        @Html.ActionLink("Cadastrar nova entidade", "Create", null, new { @class = "btn" })
+    </p>
+</div>
 <table class="table table-bordered">
     <tr>
-        <th></th>
         <th>
-            Cnpj
+        </th>
+        <th>
+            CNPJ
         </th>
         <th>
             Nome
@@ -35,38 +36,36 @@
             Total
         </th>
     </tr>
-
-@foreach (var item in Model.ToList()) {
-    <tr>
-        <td>
-            @Html.ActionLink("Usuários", "Index", "Account", new { id=item.Id }, null ) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-            @item.CNPJ
-        </td>
-        <td>
-            @item.Nome
-        </td>
-        <td>
-            @item.NomeTipoEntidade
-        </td>
-        <td>
-            @item.QuantidadeMembros()
-        </td>
-        <td>
-            @item.QuantidadeCongregados()
-        </td>
-        <td>
-            @item.QuantidadeCriancas()
-        </td>
-        <td>
-            @item.Membros.Count
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model.ToList())
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Usuários", "Index", "Account", new { id = item.Id }, null) |
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Visualizar", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @item.CNPJ
+            </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @item.NomeTipoEntidade
+            </td>
+            <td>
+                @item.QuantidadeMembros()
+            </td>
+            <td>
+                @item.QuantidadeCongregados()
+            </td>
+            <td>
+                @item.QuantidadeCriancas()
+            </td>
+            <td>
+                @item.Membros.Count
+            </td>
+        </tr>
+    }
 </table>
-

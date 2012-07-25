@@ -1,0 +1,33 @@
+﻿@model AdmCRRN.Models.PlanoConta
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>PlanoConta</legend>
+
+    <div class="display-label">Descricao</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descricao)
+    </div>
+
+    <div class="display-label">TipoConta</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoConta)
+    </div>
+
+    <div class="display-label">Codigo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Codigo)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

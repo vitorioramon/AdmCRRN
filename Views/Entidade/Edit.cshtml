@@ -5,15 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
+
+    <h2>
+        Editar entidade</h2>
+    <br />
+    <p>
+        <input type="submit" value="Gravar cadastro" class="btn btn-large btn" />
+        @Html.ActionLink("Voltar para lista", "Index", null, new { @class = "btn btn-large btn" })
+    </p>
+    <hr />
+    
     <fieldset>
-        <legend>Entidade</legend>
 
         @Html.HiddenFor(model => model.Id)
 
@@ -60,14 +67,14 @@
             @Html.LabelFor(model => model.Dirigente)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Dirigente.Id,(SelectList)ViewBag.Dirigentes)
+            @Html.DropDownListFor(model => model.Dirigente.Id, (SelectList)ViewBag.Dirigentes)
         </div>
 
          <div class="editor-label">
             @Html.LabelFor(model => model.Tesoureiro)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Tesoureiro.Id,(SelectList)ViewBag.Tesoureiros)
+            @Html.DropDownListFor(model => model.Tesoureiro.Id, (SelectList)ViewBag.Tesoureiros)
         </div>
 
          <div class="editor-label">
@@ -79,14 +86,12 @@
 
 
         @Html.Partial("~/Views/Endereco/_Edit.cshtml", Model.Endereco)
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
     </fieldset>
+    <script>
+        jQuery(function ($) {
+            $("#DataFundacao").mask("99/99/9999");
+            $("#DataEmancipacao").mask("99/99/9999");
+            $("#CNPJ").mask("99.999.999/9999-99");
+        });
+    </script>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-

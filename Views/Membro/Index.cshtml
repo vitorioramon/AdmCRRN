@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<AdmCRRN.Models.Membro>
-@using AdmCRRN.Models.Sessoes
+@using AdmCRRN.Controllers.Aplicacao.Sessao
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,7 @@
 <h2>
     Index</h2>
 <p>
-    @if (ContaSession.ContaDoTipoEntidade())
+    @if (SessaoUsuario.Conta().Instituicao.IsEntidade())
     { 
         @Html.ActionLink("Create New", "Create")
     }
