@@ -42,7 +42,11 @@
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
                         <li class="nav-header">Cadastros</li>
-                        @if (SessaoUsuario.Conta().Instituicao.IsCentro())
+                        @if (SessaoUsuario.UsuarioSuperAdmin())
+                        {
+                            <li>@Html.ActionLink("Centro Administrativo", "Index", "Centro")</li>
+                        }
+                        else if (SessaoUsuario.Conta().Instituicao.IsCentro())
                         {
                             <li><a href="@Url.Action("Index", "Entidade")"><i class="icon-home"></i>Entidades</a></li>
                             <li><a href="@Url.Action("Index", "Account", new { id = SessaoUsuario.Conta().Instituicao.Id })"><i class="icon-user"></i>Usuários</a></li>
@@ -54,10 +58,6 @@
                         { 
                             <li><a href="@Url.Action("Index", "Membro", new { id = SessaoUsuario.Conta().Instituicao.Id })"><i class="icon-home"></i>Membros</a></li>
                             <li><a href="@Url.Action("ChangePassword", "Account")"><i class="icon-user"></i>Mudar senha</a></li>
-                        }
-                        else if (SessaoUsuario.UsuarioSuperAdmin())
-                        {
-                            <li>@Html.ActionLink("Centro Administrativo", "Index", "Centro")</li>
                         }
                         <li class="nav-header">Sistema</li>
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
