@@ -3,8 +3,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>
-    Create</h2>
+<h2>Cadastrar Novo membro</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @using (Html.BeginForm())
@@ -12,9 +11,26 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Membro</legend>
-        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.TipoMembro)
-        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.EstadoCivil)
 
+        <div>
+            <input type="submit" value="Gravar membro", class="btn btn-success" /> |
+            @Html.ActionLink("Voltar para lista de membros", "Index", new { id = Model.Entidade.Id }, new { @class = "btn" })
+            <br />
+            <br />
+        </div>
+
+        <div class="editor-label">
+            Tipo do membro
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.Tipo, ((SelectList)ViewBag.TipoMembro))
+        </div>
+        <div class="editor-label">
+            Estado civil
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.EstadoCivil, (SelectList)ViewBag.EstadoCivil)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.CPF)
         </div>
@@ -22,7 +38,6 @@
             @Html.EditorFor(model => model.CPF)
             @Html.ValidationMessageFor(model => model.CPF)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Rg)
         </div>
@@ -30,7 +45,6 @@
             @Html.EditorFor(model => model.Rg)
             @Html.ValidationMessageFor(model => model.Rg)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Nome)
         </div>
@@ -38,7 +52,6 @@
             @Html.EditorFor(model => model.Nome)
             @Html.ValidationMessageFor(model => model.Nome)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Telefone)
         </div>
@@ -46,7 +59,6 @@
             @Html.EditorFor(model => model.Telefone)
             @Html.ValidationMessageFor(model => model.Telefone)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Celular)
         </div>
@@ -54,7 +66,6 @@
             @Html.EditorFor(model => model.Celular)
             @Html.ValidationMessageFor(model => model.Celular)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Filiacao)
         </div>
@@ -62,7 +73,6 @@
             @Html.EditorFor(model => model.Filiacao)
             @Html.ValidationMessageFor(model => model.Filiacao)
         </div>
- 
         <div class="editor-label">
             @Html.LabelFor(model => model.DataNascimento)
         </div>
@@ -70,7 +80,6 @@
             @Html.EditorFor(model => model.DataNascimento)
             @Html.ValidationMessageFor(model => model.DataNascimento)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.DataBatismo)
         </div>
@@ -78,7 +87,6 @@
             @Html.EditorFor(model => model.DataBatismo)
             @Html.ValidationMessageFor(model => model.DataBatismo)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.OficianteBatismo)
         </div>
@@ -86,7 +94,6 @@
             @Html.EditorFor(model => model.OficianteBatismo)
             @Html.ValidationMessageFor(model => model.OficianteBatismo)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.DataTornouSeMembro)
         </div>
@@ -94,14 +101,9 @@
             @Html.EditorFor(model => model.DataTornouSeMembro)
             @Html.ValidationMessageFor(model => model.DataTornouSeMembro)
         </div>
-  
         @Html.Partial("~/Views/Endereco/_Edit.cshtml", Model.Endereco)
-  
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Gravar membro", class="btn btn-success" />
         </p>
     </fieldset>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index", new { id = Model.Entidade.Id })
-</div>

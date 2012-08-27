@@ -15,18 +15,20 @@
     <div id="main">
         <aside>
             <div class="container-fluid">
-                 <hr class="soften">
                  <div class="row-fluid">
                     <div class="span10">
-                      <h2><img src="../../img/user_login.png"/>LOGIN</h2>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h2><img src="../../img/user_login.png"/>LOGIN</h2>
+                        @using (Html.BeginForm())
+                        {
+                                      @Html.TextBoxFor(model => model.UserName, new { placeholder = "informe o login" })
+                                      @Html.PasswordFor(model => model.Password, new { placeholder = "informe a senha" })
 
-        @using (Html.BeginForm())
-        {
-                      @Html.TextBoxFor(model => model.UserName, new { placeholder = "informe o login" })
-                      @Html.PasswordFor(model => model.Password, new { placeholder = "informe a senha" })
-
-                      <input type="submit" value="Entrar agora »" class="btn btn-danger" />
-        }
+                                      <input type="submit" value="Entrar agora »" class="btn btn-danger" />
+                        }
                     </div><!--/span-->
                   </div>            
                  <hr class="soften">
@@ -39,17 +41,7 @@
                     </div><!--/span-->
                   </div>            
                  <hr class="soften">
-@*                 <div class="row-fluid">
-                    <div class="span12">
-                      <h2><img src="../../img/Document.png"/>PLANFETO WEB</h2>
-                      <p> Nem sempre é possível imprimir e distribuir os folhetos fisicamente, 
-                          tal como em Boletim placas e corpo a corpo flyer passando, devido às 
-                          limitações de tempo e orçamentais. Uma maneira de começar em torno daquele 
-                          custo extra é fazer um panfleto de web e publicá-la em um site.</p>
-                      <p><a class="btn btn-danger" href="#">Faça seu panfleto »</a></p>
-                    </div><!--/span-->
-                  </div>            
-*@            </div>
+           </div>
 		</aside>
         <section></section>
     </div>

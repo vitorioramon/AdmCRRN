@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    var listaTipoPlanoConta = new SelectList(new string[] { "Receitas", "Despesas" });
 }
 
 <h2>Edit</h2>
@@ -28,7 +29,7 @@
             @Html.LabelFor(model => model.TipoConta)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.TipoConta)
+            @Html.DropDownListFor(model => model.TipoConta, listaTipoPlanoConta)
             @Html.ValidationMessageFor(model => model.TipoConta)
         </div>
 

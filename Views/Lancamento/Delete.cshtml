@@ -1,0 +1,35 @@
+﻿@model AdmCRRN.Models.Lancamento
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Exclusão</h2>
+
+<h3>Você tem certeza qeu deseja excluir este lançamento?</h3>
+<fieldset>
+    <legend>Lançamento</legend>
+
+    <div class="display-field">
+        <strong>Historico: </strong>
+        @Html.DisplayFor(model => model.Historico)
+    </div>
+
+    <div class="display-field">
+        <strong>Valor: </strong>
+        @Html.DisplayFor(model => model.Valor)
+    </div>
+
+    <div class="display-field">
+        <strong>Data: </strong>
+        @Html.DisplayFor(model => model.Data)
+    </div>
+    <br />
+    <br />
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Voltar para lista", "Index")
+    </p>
+}

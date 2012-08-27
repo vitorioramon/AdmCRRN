@@ -5,12 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10);
 }
-<h2>
-    Index</h2>
+<h2>Cadastro e manutenção de membros</h2>
 <p>
     @if (SessaoUsuario.Conta().Instituicao.IsEntidade())
     { 
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Novo Membro", "Create", null, new { @class="btn"})
     }
 </p>
 <br />

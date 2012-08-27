@@ -17,8 +17,20 @@
 
         @Html.HiddenFor(model => model.Id)
 
-        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.TipoMembro)
-        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.EstadoCivil)
+        <div class="editor-label">
+            Tipo do membro
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.TipoMembro)
+        </div>
+
+        <div class="editor-label">
+            Estado civil
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.EstadoCivil, (SelectList)ViewBag.EstadoCivil)
+        </div>
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.CPF)

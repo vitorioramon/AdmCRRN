@@ -1,0 +1,140 @@
+@model AdmCRRN.Models.ViewModel.ResumoLancamentoViewModel
+@using AdmCRRN.Controllers.Aplicacao.Sessao         
+@{
+    ViewBag.Title = "Lista de lançamentos";
+}
+<h2>Resumo dos lançamentos</h2>
+<div> 
+   Data do ultimo Fechamento  @SessaoUsuario.GetDataDoUltimoFechamento()
+</div>
+<p>
+    <br />
+    @Html.ActionLink("Novo Lançamento", "Create", null, new { @class="btn"})
+    @Html.ActionLink("Fechar Movimento", "FecharMovimento", null, new { @class = "btn" })
+</p>
+<div>
+    <table class="table">
+        <tr>
+            <td>
+                <h3>
+                    Saldo anterior</h3>
+            </td>
+            <td>
+                <h3>@Model.SaldoAnterior.ToString("c")</h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3>
+                    Receitas</h3>
+            </td>
+        </tr>
+        @foreach (var item in Model.Receitas)
+        {
+            <tr>
+                <td>@item.Descricao
+                </td>
+                <td>@item.Valor.ToString("c")
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <h4>
+                    Total</h4>
+            </td>
+            <td>
+                <h4>@Model.TotalReceitas.ToString("c")</h4>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h3>
+                    Despesas</h3>
+            </td>
+        </tr>
+        @foreach (var item in Model.Despesas)
+        {
+            <tr>
+                <td>
+                    @item.Descricao
+                </td>
+                <td>
+                    @item.Valor.ToString("c")
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <h4>
+                    Total</h4>
+            </td>
+            <td>
+                <h4>@Model.TotalDespesas.ToString("c")</h4>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Sumário
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>
+                    (+) Saldo anterior</h3>
+            </td>
+            <td>
+                <h3>@Model.SaldoAnterior.ToString("c")</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>
+                    (+) Total das receitas</h3>
+            </td>
+            <td>
+                <h3>@Model.TotalReceitas.ToString("c")</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>
+                    (-) Total das despesas</h3>
+            </td>
+            <td>
+                <h3>@Model.TotalDespesas.ToString("c")</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>
+                    (=) Saldo final</h3>
+            </td>
+            <td>
+                <h3>@Model.SaldoFinal.ToString("c")</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total de membros
+            </td>
+            <td>@Model.QuantidadeMembros
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total de congregados
+            </td>
+            <td>@Model.QuantidadeCongregados
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total de crianças
+            </td>
+            <td>@Model.QuantidadeCriancas
+            </td>
+        </tr>
+    </table>
+</div>
+
